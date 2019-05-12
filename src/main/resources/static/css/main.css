@@ -1,0 +1,21 @@
+body {
+	front-family: 'Pacifico';
+	background: url(/pic/hintergrundbild.png) #CCC no-repeat left top;
+	-webkit-background-size: cover;
+	-moz-backgrount: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+div {
+	width: 800px;
+	color: #FFF;
+	margin: 0 auto;	
+}
+
+h3 {
+	font-size: 2em;
+	text-align: center
+}
+
+
