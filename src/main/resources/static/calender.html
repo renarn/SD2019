@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Calender</title>
+    <title>Calendar</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http.equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwE0ngsV7Zt27NXFoaoApmYm8iuXoPkFoJwJ8ERdknLPM0 crossorigin="anonymous">
+	
 </head>
 <body>
 <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+	<h1>Calender</h1>
     <div class="card">
-        <h3 class="card-header" id="monthAndYear"></h3>
+        <h3 class="card-header" id="monthAndYear">Mont And Year</h3>
         <table class="table table-bordered table-responsive-sm" id="calendar">
             <thead>
             <tr>
@@ -42,18 +44,18 @@
         <form class="form-inline">
             <label class="lead mr-2 ml-2" for="month">Jump To: </label>
             <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
-                <option value=0>Januar</option>
-                <option value=1>Februar</option>
-                <option value=2>M�rz</option>
-                <option value=3>April</option>
+                <option value=0>Jan</option>
+                <option value=1>Feb</option>
+                <option value=2>M�r</option>
+                <option value=3>Apr</option>
                 <option value=4>Mai</option>
-                <option value=5>Juni</option>
-                <option value=6>Juli</option>
-                <option value=7>Augist</option>
-                <option value=8>Sepzember</option>
-                <option value=9>Oktober</option>
-                <option value=10>November</option>
-                <option value=11>Dezember</option>
+                <option value=5>Jun</option>
+                <option value=6>Jul</option>
+                <option value=7>Aug</option>
+                <option value=8>Sepz</option>
+                <option value=9>Okto</option>
+                <option value=10>Nov</option>
+                <option value=11>Dez</option>
             </select>
 
 
@@ -103,7 +105,7 @@
     </div>
 </div>
 <!--<button name="jump" onclick="jump()">Go</button>-->
-<script src="/css/calendar.js"></script>
+<script src="/js/calendar.js"></script>
 
 <!-- Optional JavaScript for bootstrap -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

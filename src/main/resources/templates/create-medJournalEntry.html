@@ -33,7 +33,7 @@
     		<input type="text" th:field="*{ldJournalEntryDate}" class="form-control" id="journalEntryDate" aria-describedby="dateHelp" placeholder="Hier Datum einfügen">
     		<div th:if="${#fields.hasErrors('${medicalJournalEntry.ldJournalEntryDate}')}">
   				<div class="alert alert-danger" role="alert">
-  					Bitte geben Sie ein korrektes Datum der Form 'DD-MM-JJJJ' an!'
+  					Bitte geben Sie ein korrektes Datum der Form 'DD-MM-JJJJ' an!
 				</div>
 			</div>
     		<small id="dateHelp" class="form-text text-muted">Das Datum für den Tagebucheintrag</small>
