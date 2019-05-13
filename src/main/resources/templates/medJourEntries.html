@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <title>Ihre Tagebucheinträge</title>
 </head>
+
 <body>
+
   	<nav class ="navbar navbar-expand-sm navbar-dark bg-dark"> <!--  nav-items disappear if browser shrinks below a certain size -->
   		<a href = "#" class="navbar-brand">Medi-Portal</a>
   		<button class ="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -15,7 +17,8 @@
   		<div class ="collapse navbar-collapse" id="navbarMenu">
 	  		<ul class="navbar-nav"> <!--  navbar wrapper around all the items of the list -->
 	  			<li class = "nav-item">	<!--  single list item -->
-	  				<a href="/medJourEntries/create" class ="nav-link">Neuen Eintrag erstellen</a>
+					<!--TODO: create und add noch nicht so übersichtlich: ein Link möglich? -->
+	  				<a href="/medJourEntry/create" class ="nav-link">Neuen Eintrag erstellen</a>
 	  			</li>
 	  			<li class = "nav-item">	<!--  single list item -->
 	  				<a href="/" class ="nav-link">Zurück zur Startseite</a>
@@ -33,16 +36,22 @@
 				<tr>
 					<th scope ="col">Datum</th>
 					<th scope ="col">Notiz</th>
+					<th scope ="col">Puls</th>
+					<th scope ="col">Gewicht</th>
+					<th scope ="col">Körpergröße</th>
 					<th scope ="col">Bearbeiten</th>
 					<th scope ="col">Löschen</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="medicalJournalEntry : ${medicalJournalEntries}">
-					<td th:text="${#temporals.format(medicalJournalEntry.ldJournalEntryDate,'dd.MMMM.yyyy')}"></td>
+					<td th:text="${#temporals.format(medicalJournalEntry.ldJournalEntryDate,'dd.MM.yyyy')}"></td>
 					<td th:text="${medicalJournalEntry.strNote}"></td>
-					<td><a th:href="@{/medJourEntries/edit/{id}(id=${medicalJournalEntry.lngJournalEntryId})}">Bearbeiten</a></td>
-					<td><a th:href="@{/medJourEntries/delete/{id}(id=${medicalJournalEntry.lngJournalEntryId})}">Löschen</a></td>
+					<td th:text="${medicalJournalEntry.shPulse}"></td>
+					<td th:text="${medicalJournalEntry.shWeight}"></td>
+					<td th:text="${medicalJournalEntry.shHeight}"></td>
+					<td><a th:href="@{/medJourEntry/edit/{id}(id=${medicalJournalEntry.lngJournalEntryId})}">Bearbeiten</a></td>
+					<td><a th:href="@{/medJourEntry/delete/{id}(id=${medicalJournalEntry.lngJournalEntryId})}">Löschen</a></td>
 				</tr>
 			</tbody>
 		</table>
