@@ -20,34 +20,24 @@ import com.sd.tud.PatientPortal.data.entity.MedicalJournalEntry;
 
 @Controller
 @SessionAttributes({"lngMedicalJournalEntryId"})
-@RequestMapping(value="/medJourEntries")
+@RequestMapping(value="/medJourEntry")
+
 public class MedicalJournalEntryController {
 	
-	//TODO finish javadoc
+	//TODO: finish javadoc
 	
 	@Autowired
 	private MedicalJournalService medicalJournalService;
 	
 	@Autowired
 	private MedicalJournalEntryService medicalJournalEntryService;
-	
-	/**
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value="/view", method = RequestMethod.GET)
-	public String showAllMedicalJournalEntries(Model model) {
-		
-		model.addAttribute("medicalJournalEntries",medicalJournalEntryService.getAllMedicalJournalEntries());
-		return "medJourEntries";	
-	}
-	
+
 	/**
 	 * 
 	 * @param medicalJournalEntry
 	 * @return
 	 */
+	//TODO: entfernen entspricht doch add, oder?
 	@RequestMapping(value="/create", method = RequestMethod.GET)
 	public String showCreateMedicalJournalEntryForm(MedicalJournalEntry medicalJournalEntry) {
 		
@@ -73,7 +63,7 @@ public class MedicalJournalEntryController {
 		
 		medicalJournalEntryService.saveMedicalJournalEntry(medicalJournalEntry);
 		// update list of persisted entities in corresponding view
-		model.addAttribute("medicalJournalEntries",medicalJournalEntryService.getAllMedicalJournalEntries());
+		model.addAttribute("medicalJournalEntries",medicalJournalService.getAllMedicalJournalEntries());
 		return "medJourEntries";
 	}
 	
@@ -93,8 +83,10 @@ public class MedicalJournalEntryController {
 				.orElseThrow(() -> new IllegalArgumentException("Falsche ID: " + id));
 		
 		model.addAttribute("medicalJournalEntry",medicalJournalEntry);
+
 		// set the session attribute:
 		model.addAttribute("lngMedicalJournalEntryId", medicalJournalEntry.getLngJournalEntryId());
+
 		return "update-medJournalEntry";
 	}
 	
@@ -106,6 +98,7 @@ public class MedicalJournalEntryController {
 	 * @param model
 	 * @return
 	 */
+
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
 	public String updateMedicalJournalEntry(@Valid MedicalJournalEntry medicalJournalEntry, BindingResult bindingResult, Model model, @SessionAttribute("lngMedicalJournalEntryId") long medicalJournalEntryId) {
 		
@@ -120,12 +113,15 @@ public class MedicalJournalEntryController {
 			
 			// update original object with new values
 			existingMedicalJournalEntry.setStrNote(medicalJournalEntry.getStrNote());
+
 			existingMedicalJournalEntry.setLdJournalEntryDate(medicalJournalEntry.getLdJournalEntryDate());
 			
 			// save the altered entity:
 			medicalJournalEntryService.saveMedicalJournalEntry(existingMedicalJournalEntry);
+
 			// pass the altered list of items to the modell:
-			model.addAttribute("medicalJournalEntries",medicalJournalEntryService.getAllMedicalJournalEntries());
+			model.addAttribute("medicalJournalEntries",medicalJournalService.getAllMedicalJournalEntries());
+
 			// return the view:
 			return "medJourEntries";
 	}
@@ -142,8 +138,11 @@ public class MedicalJournalEntryController {
 		MedicalJournalEntry medicalJournalEntry = medicalJournalEntryService.findMedicalJournalEntryById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Falsche ID: " + id));
 		
+
 		medicalJournalEntryService.deleteMedicalJournalEntry(medicalJournalEntry);
-		model.addAttribute("medicalJournalEntries",medicalJournalEntryService.getAllMedicalJournalEntries());
+
+		model.addAttribute("medicalJournalEntries",medicalJournalService.getAllMedicalJournalEntries());
+
 		return "medJourEntries";
 	}
 }
