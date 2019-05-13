@@ -29,15 +29,7 @@ public class MedicalJournalEntryService {
 		this.medicalJournalEntryRepository.save(medicalJournalEntry);
 		return medicalJournalEntry;
 	}
-	/**
-	 * fetch all persisted entities of type MedicalJournalEntry from the database
-	 * @return	a List with all MedicalJournalEntries
-	 */
-	public List<MedicalJournalEntry> getAllMedicalJournalEntries(){
-		
-		List<MedicalJournalEntry> medicalJournalEntries = (List<MedicalJournalEntry>) this.medicalJournalEntryRepository.findAll();
-		return medicalJournalEntries;
-	}
+
 	/**
 	 * fetch a single entity of type MedicalJournalEntry from the database
 	 * @param id	the id of the object you want to get

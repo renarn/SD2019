@@ -1,8 +1,13 @@
 package com.sd.tud.PatientPortal.business.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import com.sd.tud.PatientPortal.data.entity.MedicalJournalEntry;
+import com.sd.tud.PatientPortal.data.repository.MedicalJournalEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.sd.tud.PatientPortal.data.entity.MedicalJournal;
@@ -13,7 +18,12 @@ public class MedicalJournalService {
 	
 	// data access through repository interface
 	private MedicalJournalRepository medicalJournalRepository;
-	
+
+	// data access through repository interface
+	@Autowired
+	private MedicalJournalEntryRepository medicalJournalEntryRepository;
+
+
 	@Autowired // activates dependency injection for the constructor
 	public MedicalJournalService(MedicalJournalRepository medJournalRepository) {
 		this.medicalJournalRepository = medJournalRepository;
@@ -71,7 +81,26 @@ public class MedicalJournalService {
 		return true;
 		
 	}
-	
-	
+
+	/**
+	 * fetch all persisted entities of type MedicalJournalEntry from the database
+	 * @return	a List with all MedicalJournalEntries
+	 */
+	public List<MedicalJournalEntry> getAllMedicalJournalEntries(){
+
+		List<MedicalJournalEntry> medicalJournalEntries = (List<MedicalJournalEntry>) medicalJournalEntryRepository.findAll();
+		return medicalJournalEntries;
+	}
+
+	/**
+	 * fetch all persisted entities of type MedicalJournalEntry from the database
+	 * @return	a Optional with MedicalJournalEntries filtered by their Medical Journal
+	 */
+	public Optional<MedicalJournalEntry> getAllMedicalJournalEntries(MedicalJournal medJournal) {
+
+		Optional<MedicalJournalEntry> medicalJournalEntries=((List<MedicalJournalEntry>) medicalJournalEntryRepository.findAll()).stream().filter(p -> p.getMedJournal() == medJournal).findAny();
+
+		return medicalJournalEntries;
+	}
 
 }
