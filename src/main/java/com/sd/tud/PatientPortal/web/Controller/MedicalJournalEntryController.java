@@ -1,6 +1,10 @@
 package com.sd.tud.PatientPortal.web.Controller;
 
 
+/*
+ * Hallo
+ */
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +59,6 @@ public class MedicalJournalEntryController {
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String addMedicalJournalEntry(@Valid MedicalJournalEntry medicalJournalEntry, BindingResult bindingResult, Model model ) {
 
-		// TODO: add a validator to this 
 		
 		if (bindingResult.hasErrors()) {
 			return "create-medJournalEntry";
