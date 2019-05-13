@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -36,6 +37,7 @@ public abstract class JournalEntry {
 	@UpdateTimestamp
 	private LocalDateTime ldtJournalEntryUpdateDate;
 	@Column(name="JOURNAL_ENTRY_NOTE")
+	@Size(min=0,max=255)
 	private String strNote;
 	
 

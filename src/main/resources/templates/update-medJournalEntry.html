@@ -28,7 +28,7 @@
   	
 	<form action = "#" th:action="@{/medJourEntries/update/{id}(id=${medicalJournalEntry.lngJournalEntryId})}" th:object=${medicalJournalEntry} method ="POST">
 
-		<div class="form-group">
+		<div class="form-group col-md-4">
     		<label for="journalEntryDate">Datum</label>
     		<input type="text" th:field="*{ldJournalEntryDate}" class="form-control" id="journalEntryDate" aria-describedby="dateHelp" placeholder="Hier Datum einfügen" th:value ="${medicalJournalEntry.ldJournalEntryDate}">
     		<div th:if="${#fields.hasErrors('${medicalJournalEntry.ldJournalEntryDate}')}">
@@ -39,9 +39,14 @@
     		<small id="dateHelp" class="form-text text-muted">Das Datum für den Tagebucheintrag</small>
   		</div>
 		
-  		<div class="form-group">
+  		<div class="form-group col-md-8">
     		<label for="note">Notiz</label>
-    		<input type="text" th:field="*{strNote}" class="form-control" id="note" aria-describedby="dateHelp" placeholder="Platz für Notizen" th:value="${medicalJournalEntry.strNote}">
+    		<textarea rows = "5" type="text" th:field="*{strNote}" class="form-control" id="note" aria-describedby="dateHelp" placeholder="Platz für Notizen" th:value="${medicalJournalEntry.strNote}"></textarea>
+    		<div th:if="${#fields.hasErrors('${medicalJournalEntry.strNote}')}">
+  				<div class="alert alert-danger" role="alert">
+  					Sie dürfen maximal 255 Zeichen eingeben!
+				</div>
+			</div>
     		<small id="dateHelp" class="form-text text-muted">Eine Notiz für den Tagebucheintrag</small>
   		</div>
 		
