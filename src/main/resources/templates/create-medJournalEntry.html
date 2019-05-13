@@ -30,9 +30,11 @@
   	</nav>
 
   	
+
 	<form action = "#" th:action="@{/medJourEntry/add}" th:object=${medicalJournalEntry} method ="post">
 
 		<div th:replace="edit-medJournalEntry.html :: medEntryForm(medEntry=${#object})"/>
+
 
 		<button type="submit" class="btn btn-primary">Tagebucheintrag erstellen</button>
 

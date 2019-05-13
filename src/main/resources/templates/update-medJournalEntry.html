@@ -28,8 +28,8 @@
   	
 	<form action = "#" th:action="@{/medJourEntry/update/{id}(id=${medicalJournalEntry.lngJournalEntryId})}" th:object=${medicalJournalEntry} method ="POST">
 
-		<div th:replace="edit-medJournalEntry.html :: medEntryForm(medEntry=${#object})"/>
 
+		<div th:replace="edit-medJournalEntry.html :: medEntryForm(medEntry=${#object})"/>
 		<button type="submit" class="btn btn-primary">Änderung speichern</button>
 
 	</form>
