@@ -37,7 +37,7 @@ public abstract class JournalEntry {
 	@UpdateTimestamp
 	private LocalDateTime ldtJournalEntryUpdateDate;
 	@Column(name="JOURNAL_ENTRY_NOTE")
-	@Size(min=0,max=255)
+	@Size(min=0,max=255, message="Ihre Notiz darf maximal 255 Zeichen lang sein!")
 	private String strNote;
 	
 

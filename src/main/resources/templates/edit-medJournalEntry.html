@@ -1,12 +1,15 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="utf-8">
+</head>
 
     <body>
 
         <div th:fragment="medEntryForm (medEntry)">
 
-            <div class="form-group">
+            <div class="form-group col-md-4">
 
                 <label for="journalEntryDate">Datum</label>
 
@@ -23,17 +26,24 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
 
                 <label for="note">Notiz</label>
 
-                <input type="text" th:field="*{strNote}" class="form-control" id="note" aria-describedby="dateHelp" placeholder="Platz für Notizen">
+                <textarea type="text" th:field="*{strNote}" class="form-control" id="note" aria-describedby="dateHelp" placeholder="Platz für Notizen" rows="5"></textarea>
+				
+                <div th:if="${#fields.hasErrors('${medicalJournalEntry.strNote}')}">
+                    <div class="alert alert-danger" role="alert">
+                        <p th:each="err : ${#fields.errors('strNote')}" th:text="${err}"></p>
+                    </div>
+                </div>
+
 
                 <small id="dateHelp" class="form-text text-muted">Eine Notiz für den Tagebucheintrag</small>
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-4">
 
                 <label for="pulse">Puls</label>
 
@@ -43,7 +53,7 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-4">
 
                 <label for="weight">Gewicht</label>
 
@@ -51,7 +61,7 @@
 
                 <div th:if="${#fields.hasErrors('${medicalJournalEntry.shWeight}')}">
                     <div class="alert alert-danger" role="alert">
-                        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                        <p th:each="err : ${#fields.errors('shWeight')}" th:text="${err}"></p>
                     </div>
                 </div>
 
@@ -59,15 +69,15 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-4">
 
                 <label for="height">Körpergröße</label>
 
-                <input type="text" th:field="*{shHeight}" class="form-control" id="height" aria-describedby="heightHelp" placeholder="Körpergröße">
+                <input type="text" th:field="*{shHeight}" class="form-control" id="height" aria-describedby="heightHelp" placeholder="KÃ¶rpergrÃ¶ÃŸe">
 
-                <div th:if="${#fields.hasErrors('${medicalJournalEntry.shWeight}')}">
+                <div th:if="${#fields.hasErrors('${medicalJournalEntry.shHeight}')}">
                     <div class="alert alert-danger" role="alert">
-                        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                        <p th:each="err : ${#fields.errors('shHeight')}" th:text="${err}"></p>
                     </div>
                 </div>
 
