@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -57,8 +60,12 @@ public class MedicalJournalEntry extends JournalEntry{
 	@Column(name="JOURNAL_ENTRY_PULSE")
 	private short shPulse; 
 	@Column(name="JOURNAL_ENTRY_HEIGHT")
+	@Min(value = 1, message="Die Größe muss größer als 1cm sein.")
+	@Max(value = 300, message="Die Größe muss kleiner als 300cm sein.")
 	private short shHeight; // in centimeters
 	@Column(name="JOURNAL_ENTRY_WEIGHT")
+	@Min(value = 1, message="Das Gewicht muss größer als 1kg sein.")
+	@Max(value = 500, message="Das Gewicht muss kleiner als 500kg sein.")
 	private short shWeight; // in kilograms
 	@Column(name="JOURNAL_ENTRY_BMI")
 	private float fltBmi;
