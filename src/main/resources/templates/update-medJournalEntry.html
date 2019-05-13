@@ -17,7 +17,7 @@
   		<div class ="collapse navbar-collapse" id="navbarMenu">
 	  		<ul class="navbar-nav"> <!--  navbar wrapper around all the items of the list -->
 	  			<li class = "nav-item">	<!--  single list item -->
-	  				<a href="/medJourEntries/view" class ="nav-link">Zurück zu meinem Tagebuch</a>
+	  				<a href="/medJourEntries/all" class ="nav-link">Zurück zu meinem Tagebuch</a>
 	  			</li>
 	  			<li class = "nav-item">	<!--  single list item -->
 	  				<a href=".." class ="nav-link">Zurück zur Startseite</a>
@@ -26,26 +26,12 @@
   		</div>
   	</nav>
   	
-	<form action = "#" th:action="@{/medJourEntries/update/{id}(id=${medicalJournalEntry.lngJournalEntryId})}" th:object=${medicalJournalEntry} method ="POST">
+	<form action = "#" th:action="@{/medJourEntry/update/{id}(id=${medicalJournalEntry.lngJournalEntryId})}" th:object=${medicalJournalEntry} method ="POST">
 
-		<div class="form-group">
-    		<label for="journalEntryDate">Datum</label>
-    		<input type="text" th:field="*{ldJournalEntryDate}" class="form-control" id="journalEntryDate" aria-describedby="dateHelp" placeholder="Hier Datum einfügen" th:value ="${medicalJournalEntry.ldJournalEntryDate}">
-    		<div th:if="${#fields.hasErrors('${medicalJournalEntry.ldJournalEntryDate}')}">
-  				<div class="alert alert-danger" role="alert">
-  					Bitte geben Sie ein korrektes Datum der Form 'DD-MM-JJJJ' an!'
-				</div>
-			</div>
-    		<small id="dateHelp" class="form-text text-muted">Das Datum für den Tagebucheintrag</small>
-  		</div>
-		
-  		<div class="form-group">
-    		<label for="note">Notiz</label>
-    		<input type="text" th:field="*{strNote}" class="form-control" id="note" aria-describedby="dateHelp" placeholder="Platz für Notizen" th:value="${medicalJournalEntry.strNote}">
-    		<small id="dateHelp" class="form-text text-muted">Eine Notiz für den Tagebucheintrag</small>
-  		</div>
-		
+		<div th:replace="edit-medJournalEntry.html :: medEntryForm(medEntry=${#object})"/>
+
 		<button type="submit" class="btn btn-primary">Änderung speichern</button>
+
 	</form>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

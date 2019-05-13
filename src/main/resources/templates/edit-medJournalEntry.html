@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <body>
+
+        <div th:fragment="medEntryForm (medEntry)">
+
+            <div class="form-group">
+
+                <label for="journalEntryDate">Datum</label>
+
+                <input type="text" th:field="*{ldJournalEntryDate}" class="form-control" id="journalEntryDate" aria-describedby="dateHelp" placeholder="Hier Datum einfügen">
+
+                <div th:if="${#fields.hasErrors('${medicalJournalEntry.ldJournalEntryDate}')}">
+                    <div class="alert alert-danger" role="alert">
+                        Bitte geben Sie ein korrektes Datum der Form 'DD.MM.JJJJ' an!'
+                    </div>
+                </div>
+
+                <small id="dateHelp" class="form-text text-muted">Das Datum für den Tagebucheintrag</small>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="note">Notiz</label>
+
+                <input type="text" th:field="*{strNote}" class="form-control" id="note" aria-describedby="dateHelp" placeholder="Platz für Notizen">
+
+                <small id="dateHelp" class="form-text text-muted">Eine Notiz für den Tagebucheintrag</small>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="pulse">Puls</label>
+
+                <input type="text" th:field="*{shPulse}" class="form-control" id="pulse" aria-describedby="pulseHelp" placeholder="Puls">
+
+                <small id="pulseHelp" class="form-text text-muted">Bitte tragen Sie Ihren Puls hier ein.</small>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="weight">Gewicht</label>
+
+                <input type="text" th:field="*{shWeight}" class="form-control" id="weight" aria-describedby="weightHelp" placeholder="Gewicht">
+
+                <div th:if="${#fields.hasErrors('${medicalJournalEntry.shWeight}')}">
+                    <div class="alert alert-danger" role="alert">
+                        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                    </div>
+                </div>
+
+                <small id="weightHelp" class="form-text text-muted">Bitte tragen Sie Ihr Gewicht (in Kilogramm) hier ein.</small>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="height">Körpergröße</label>
+
+                <input type="text" th:field="*{shHeight}" class="form-control" id="height" aria-describedby="heightHelp" placeholder="Körpergröße">
+
+                <div th:if="${#fields.hasErrors('${medicalJournalEntry.shWeight}')}">
+                    <div class="alert alert-danger" role="alert">
+                        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                    </div>
+                </div>
+
+                <small id="heightHelp" class="form-text text-muted">Bitte tragen Sie Ihre Körpergröße (in Zentimeter) hier ein.</small>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
